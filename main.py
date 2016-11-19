@@ -1,18 +1,18 @@
 '''
 Created on Nov 14, 2016
 
-@author: ubuntu
+@author: fangyihao
 '''
 import preprocessor
-
+import lexicon
 def main():
     pp = preprocessor.Preprocessor()
-    
-    #pp.do_udc()
-    #pp.do_cmdc()
-    pp.do_wiki()
-    pp.do_bdc()
-    
+    csvs = []
+    csvs.extend(pp.do_udc())
+    csvs.extend(pp.do_cmdc())
+    csvs.extend(pp.do_wiki())
+    csvs.extend(pp.do_bdc())
+    lexicon.Lexicon(csvs)
 
 if __name__ == "__main__":
     main()

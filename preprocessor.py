@@ -3,18 +3,18 @@ import os
 import csv
 import codecs
 import re
-import nltk
+import math
 class Preprocessor:
     tk = tokenizer.Tokenizer()
     raw_dir = "./raw/"
     processed_dir = "./processed/"
     
-    def create_csv_iter(self, filename):
+    def create_csv_iter(self, file_path):
         """
         Returns an iterator over a CSV file. Skips the header.
         """
-        with open(filename) as csvfile:
-            reader = csv.reader(csvfile)
+        with open(file_path) as csv_file:
+            reader = csv.reader(csv_file)
             # Skip the header
             next(reader)
             for row in reader:
@@ -45,7 +45,7 @@ class Preprocessor:
                 context, utterance = row[:2]
                 writer.writerow([context, utterance])
 
-        return
+        return tpp, vpp
     
     def do_cmdc(self):
         # movie line text file path
@@ -65,8 +65,8 @@ class Preprocessor:
                 # print(m.group(1) + " | " + m.group(2) + " | " + m.group(3) + " | " + m.group(4) + " | " + m.group(5))
                 movie_lines[m.group(1)] = m.group(5)
                 
-        with codecs.open(mcp, "r", encoding="windows-1252") as mcf:
-            num_lines = sum(1 for line in mcf)
+        #with codecs.open(mcp, "r", encoding="windows-1252") as mcf:
+        #    num_lines = sum(1 for line in mcf)
         
         with open(tpp, "w") as tpf:
             with open(vpp, "w") as vpf: 
@@ -95,13 +95,13 @@ class Preprocessor:
                                         context_sentence = ' '.join(self.tk.word_tokenize(self.tk.sent_strip(context_sentences[len(context_sentences)-1])))
                                         utterance_sentence = ' '.join(self.tk.word_tokenize(self.tk.sent_strip(utterance_sentences[0])))
                                         if context_sentence != utterance_sentence:
-                                            if l % (num_lines / 10) != 1:
+                                            if math.floor(l % 10) != 1:
                                                 twriter.writerow([context_sentence, utterance_sentence])
                                             else:
                                                 vwriter.writerow([context_sentence, utterance_sentence])  
                                     j -= 2
     
-        return
+        return tpp, vpp
     
     def do_wiki(self):
         # wiki dumps raw xml file path
@@ -160,17 +160,17 @@ class Preprocessor:
                                     line = line.strip()
                                     tokens = self.tk.word_tokenize(line)        
                                     if len(tokens) > 5:
-                                        answer = ' '.join(tokens)
-                                        question = "tell me the definition of " + ("" if not article else 'the ') + term + " ."
-                                        question = ' '.join(self.tk.word_tokenize(question))
-                                        if count % 60000 != 1:
-                                            twriter.writerow([question, answer])
+                                        utterance = ' '.join(tokens)
+                                        context = "tell me the definition of " + ("" if not article else 'the ') + term + " ."
+                                        context = ' '.join(self.tk.word_tokenize(context))
+                                        if math.floor(count % 20) != 1:
+                                            twriter.writerow([context, utterance])
                                         else:
-                                            vwriter.writerow([question, answer])
+                                            vwriter.writerow([context, utterance])
                                         awake = False
                                         count += 1
                             
-        return
+        return tpp, vpp
         
     
     def do_bdc(self):

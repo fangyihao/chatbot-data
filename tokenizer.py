@@ -81,10 +81,4 @@ class Tokenizer:
         utterance = utterance.lstrip('. ')
         return utterance
 
-#s = "'''AI''', '''A.I.''', '''Ai''', or '''ai''' may refer to:"
-#print(nltk.sent_tokenize(s))
-#print(Tokenizer().sent_tokenize(s))
-#print(Tokenizer().word_tokenize(s))
-#print(Tokenizer().sent_strip(s))
-#s2 = '<u>i</u> am <p>here</p>'
-#print(Tokenizer().clean_html_tags(s2))
+
