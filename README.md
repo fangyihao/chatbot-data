@@ -36,3 +36,8 @@ Chatbot-data is a python project that extracts question-answer pairs from raw re
 ### 5. Setup the CLASSPATH environment variable
   
     export CLASSPATH=/usr/share/stanford-nlp/stanford-ner-2015-12-09/stanford-ner.jar:/usr/share/stanford-nlp/stanford-postagger-full-2015-12-09/stanford-postagger.jar:/usr/share/stanford-nlp/stanford-parser-full-2015-12-09/stanford-parser.jar:/usr/share/stanford-nlp/stanford-parser-full-2015-12-09/stanford-parser-3.6.0-models.jar:/usr/share/stanford-nlp/stanford-ner-2015-12-09/classifiers/english.all.3class.distsim.crf.ser.gz:/usr/share/stanford-nlp/stanford-ner-2015-12-09/classifiers/english.muc.7class.distsim.crf.ser.gz:/usr/share/stanford-nlp/stanford-postagger-2015-12-09/models/english-left3words-distsim.tagger
+
+## Data Download
+### 1. Download and unzip data dumps of Wikipedia, and then move it under the directory raw/wiki/
+    curl -O https://dumps.wikimedia.org/enwiki/20161101/enwiki-20161101-pages-articles.xml.bz2
+    
