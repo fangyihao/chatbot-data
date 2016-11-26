@@ -17,7 +17,7 @@ Chatbot-data is a python project that extracts question-answer pairs from raw re
     sudo apt-get install python3-tk
     sudo apt install python3-pip
 
-### 3. Install numpy, nltk and download punkt tokenizer
+### 3. Install numpy, nltk and download the punkt tokenizer
 
     sudo pip install numpy nltk   
     python
