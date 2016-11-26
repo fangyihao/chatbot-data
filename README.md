@@ -6,11 +6,8 @@ Chatbot-data is a python project that extracts question-answer pairs from raw re
 ### 1. Download and install Oracle Java 1.8+:
 
     sudo apt install software-properties-common
-
     sudo add-apt-repository ppa:webupd8team/java 
-
     sudo apt-get update
-
     sudo apt-get install oracle-java8-installer
 
 ### 2. Install python3
@@ -23,9 +20,13 @@ Chatbot-data is a python project that extracts question-answer pairs from raw re
 
     sudo apt install python3-pip
 
-### 3. Install numpy and nltk
+### 3. Install numpy, nltk and download punkt tokenizer
 
     sudo pip install numpy nltk
+    
+    python
+    >> import nltk
+    >> nltk.download('punkt')
 
 ### 4. Download and unzip stanford-parser, stanford-ner and stanford-postagger
 
