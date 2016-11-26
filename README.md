@@ -35,11 +35,11 @@ Chatbot-data is a python project that extracts question-answer pairs from raw re
   
     curl -O http://nlp.stanford.edu/software/stanford-postagger-full-2015-12-09.zip
 
-    sudo unzip file.zip -d /usr/share/stanford-nlp/
+    sudo unzip stanford-parser-full-2015-12-09.zip -d /usr/share/stanford-nlp/
   
-    sudo unzip file.zip -d /usr/share/stanford-nlp/
+    sudo unzip stanford-ner-2015-12-09.zip -d /usr/share/stanford-nlp/
   
-    sudo unzip file.zip -d /usr/share/stanford-nlp/
+    sudo unzip stanford-postagger-full-2015-12-09.zip -d /usr/share/stanford-nlp/
   
 ### 5. Setup the CLASSPATH environment variable
   
